@@ -1,13 +1,16 @@
-import * as fs from 'node:fs'
-import * as path_ from 'node:path'
 import chokidar from 'chokidar'
 import esbuild from 'esbuild'
-import readdirp from 'readdirp'
 import stylePlugin from 'esbuild-style-plugin'
+import * as fs from 'node:fs'
+import * as path_ from 'node:path'
+import readdirp from 'readdirp'
 
 const watchedFiles = ['**.scss']
 const outputFiles = ['**.scss.js']
 
+// TODO: also need a special case for /static/shared.scss where we need to update
+// every .scss file that potentially imports from it
+// Luckily that seems to be the only usage of scss imports
 const build = async (path) => {
 	console.log('building', path)
 	const result = await esbuild.build({
@@ -46,14 +49,15 @@ const removeBuildOutput = async (path) => {
 	await fs.promises.rm(path, { force: true })
 }
 
-await Promise.all(
-	(
-		await readdirp.promise('.', {
-			fileFilter: outputFiles,
-			directoryFilter: ['!.git', '!node_modules'],
-		})
-	).map(({ path }) => removeBuildOutput(path)),
-)
+// Uncomment for cleanup
+// await Promise.all(
+// 	(
+// 		await readdirp.promise('.', {
+// 			fileFilter: outputFiles,
+// 			directoryFilter: ['!.git', '!node_modules'],
+// 		})
+// 	).map(({ path }) => removeBuildOutput(path)),
+// )
 
 await Promise.all(
 	(

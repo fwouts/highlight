@@ -5,19 +5,9 @@ import * as path_ from 'node:path'
 import readdirp from 'readdirp'
 import * as fs from 'node:fs'
 
-// Uncomment for cleanup
-// TODO: automate this by checking for css.ts next to each
-// const removals = []
-// for await (const entry of readdirp('.', {
-// 	fileFilter: '**.css.generated.js',
-// 	directoryFilter: ['!.git', '!node_modules'],
-// })) {
-// 	const { path } = entry
-// 	removals.push(fs.promises.rm(path))
-// }
-
-// await Promise.all(removals)
-
+// FIXME: this actually needs to watch all .ts/.tsx files and rebuild everything
+// since .css.ts can technically import from anywhere
+// Should probably use them as entry points and use native esbuild watcher instead
 const watchedFiles = ['**.css.ts']
 const outputFiles = ['**.css.generated.js']
 
@@ -57,14 +47,15 @@ const removeBuildOutput = async (path) => {
 	await fs.promises.rm(path, { force: true })
 }
 
-await Promise.all(
-	(
-		await readdirp.promise('.', {
-			fileFilter: outputFiles,
-			directoryFilter: ['!.git', '!node_modules'],
-		})
-	).map(({ path }) => removeBuildOutput(path)),
-)
+// Uncomment for cleanup
+// await Promise.all(
+// 	(
+// 		await readdirp.promise('.', {
+// 			fileFilter: outputFiles,
+// 			directoryFilter: ['!.git', '!node_modules'],
+// 		})
+// 	).map(({ path }) => removeBuildOutput(path)),
+// )
 
 await Promise.all(
 	(
