@@ -27,7 +27,7 @@ import {
 } from './types/types'
 import { PathListener } from './listeners/path-listener'
 import { GraphQLClient } from 'graphql-request'
-import ErrorStackParser from 'error-stack-parser'
+import { ErrorStackParser, StackFrame } from './error-stack-parser'
 import {
 	getSdk,
 	PushPayloadDocument,
@@ -457,7 +457,7 @@ export class Highlight {
 	}
 
 	async consumeCustomError(error: Error, message?: string, payload?: string) {
-		let res: ErrorStackParser.StackFrame[] = []
+		let res: StackFrame[] = []
 		try {
 			res = ErrorStackParser.parse(error)
 		} catch (e) {
@@ -472,6 +472,7 @@ export class Highlight {
 			source: '',
 			lineNumber: res[0]?.lineNumber ? res[0]?.lineNumber : 0,
 			columnNumber: res[0]?.columnNumber ? res[0]?.columnNumber : 0,
+			// @ts-expect-error
 			stackTrace: res,
 			timestamp: new Date().toISOString(),
 			payload: payload,

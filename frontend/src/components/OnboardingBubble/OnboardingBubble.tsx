@@ -12,7 +12,7 @@ import Confetti from 'react-confetti'
 import { useNavigate } from 'react-router-dom'
 import useSessionStorage from 'react-use/lib/useSessionStorage'
 
-import { ReactComponent as CheckIcon } from '../../static/verify-check-icon.svg'
+// import { ReactComponent as CheckIcon } from '../../static/verify-check-icon.svg'
 import Button from '../Button/Button/Button'
 import PillButton from '../Button/PillButton/PillButton'
 import InfoTooltip from '../InfoTooltip/InfoTooltip'
@@ -254,11 +254,11 @@ const OnboardingBubble = () => {
 												},
 											)}
 										>
-											<CheckIcon
+											{/* <CheckIcon
 												className={clsx(
 													styles.checkIcon,
 												)}
-											/>
+											/> */}
 										</div>
 										{step.displayName}
 										{step.tooltip && (

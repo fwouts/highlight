@@ -1,6 +1,6 @@
 import { ErrorGroup, Maybe, Project } from '@graph/schemas'
-import { cloneDeep } from 'lodash'
-import moment from 'moment/moment'
+import { cloneDeep } from 'lodash-es'
+import moment from 'moment'
 
 export const getProjectPrefix = (project?: Maybe<Pick<Project, 'name'>>) =>
 	project?.name.slice(0, 3).toUpperCase() || 'HIG'

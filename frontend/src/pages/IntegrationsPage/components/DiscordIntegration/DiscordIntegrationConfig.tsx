@@ -13,7 +13,8 @@ import React, { useEffect } from 'react'
 
 import styles from './DiscordIntegrationConfig.module.scss'
 
-const DISCORD_CLIENT_ID = import.meta.env.DISCORD_CLIENT_ID
+// const DISCORD_CLIENT_ID = import.meta.env.DISCORD_CLIENT_ID
+const DISCORD_CLIENT_ID = ''
 
 const getDiscordOauthUrl = (project_id: string): string => {
 	const redirectURI = `${GetBaseURL()}/callback/discord`

@@ -10,7 +10,8 @@ import { GetBaseURL } from '@util/window'
 import { useCallback } from 'react'
 
 const LINEAR_SCOPES = ['read', 'issues:create', 'comments:create']
-const LINEAR_CLIENT_ID = import.meta.env.LINEAR_CLIENT_ID
+// const LINEAR_CLIENT_ID = import.meta.env.LINEAR_CLIENT_ID
+const LINEAR_CLIENT_ID = ''
 
 export const useLinearIntegration = () => {
 	const { project_id } = useParams<{ project_id: string }>()

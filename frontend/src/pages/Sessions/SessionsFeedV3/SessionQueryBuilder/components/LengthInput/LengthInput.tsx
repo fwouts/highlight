@@ -3,7 +3,7 @@ import 'antd/dist/antd.css'
 import Button from '@components/Button/Button/Button'
 import Input from '@components/Input/Input'
 import { Slider } from 'antd'
-import { debounce } from 'lodash'
+import { debounce } from 'lodash-es'
 import React, { useEffect, useMemo, useState } from 'react'
 import { useToggle } from 'react-use'
 

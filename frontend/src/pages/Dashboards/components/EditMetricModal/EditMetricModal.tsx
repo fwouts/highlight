@@ -29,7 +29,7 @@ import TrashIcon from '@icons/TrashIcon'
 import { UNIT_OPTIONS } from '@pages/Dashboards/components/DashboardCard/DashboardCard'
 import { useParams } from '@util/react-router/useParams'
 import { Form } from 'antd'
-import _ from 'lodash'
+import _ from 'lodash-es'
 import React, { useEffect, useMemo, useState } from 'react'
 
 import styles from './EditMetricModal.module.scss'

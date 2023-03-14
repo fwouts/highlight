@@ -10,7 +10,7 @@ import {
 	useGetSourcemapVersionsQuery,
 } from '@graph/hooks'
 import { useParams } from '@util/react-router/useParams'
-import { debounce } from 'lodash'
+import { debounce } from 'lodash-es'
 import React, { useEffect } from 'react'
 
 import styles from './SourcemapSettings.module.scss'

@@ -1,7 +1,7 @@
 import { ConsoleMessage } from '../types/shared-types'
 import { ConsoleMethods } from '../types/client'
 import { patch, stringify } from '../utils/utils'
-import ErrorStackParser from 'error-stack-parser'
+import { ErrorStackParser } from './../error-stack-parser'
 
 export type StringifyOptions = {
 	// limit of string length
@@ -117,6 +117,7 @@ export function ConsoleListener(
 
 					callback({
 						type: level,
+						// @ts-expect-error
 						trace: trace.slice(1),
 						value: payload,
 						time: Date.now(),

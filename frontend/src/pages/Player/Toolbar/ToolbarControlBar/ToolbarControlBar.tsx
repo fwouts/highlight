@@ -29,13 +29,13 @@ import {
 	Text,
 } from '@highlight-run/ui'
 import ActivityIcon from '@icons/ActivityIcon'
-import { ReactComponent as AnnotationIcon } from '@icons/Solid/annotation.svg'
-import { ReactComponent as ChevronLeftIcon } from '@icons/Solid/cheveron-left.svg'
-import { ReactComponent as ChevronRightIcon } from '@icons/Solid/cheveron-right.svg'
-import { ReactComponent as CrossIcon } from '@icons/Solid/cross.svg'
-import { ReactComponent as CursorClickIcon } from '@icons/Solid/cursor-click.svg'
-import { ReactComponent as FastForwardIcon } from '@icons/Solid/fast-forward.svg'
-import { ReactComponent as PlayCircleIcon } from '@icons/Solid/play-circle.svg'
+// import { ReactComponent as AnnotationIcon } from '@icons/Solid/annotation.svg'
+// import { ReactComponent as ChevronLeftIcon } from '@icons/Solid/cheveron-left.svg'
+// import { ReactComponent as ChevronRightIcon } from '@icons/Solid/cheveron-right.svg'
+// import { ReactComponent as CrossIcon } from '@icons/Solid/cross.svg'
+// import { ReactComponent as CursorClickIcon } from '@icons/Solid/cursor-click.svg'
+// import { ReactComponent as FastForwardIcon } from '@icons/Solid/fast-forward.svg'
+// import { ReactComponent as PlayCircleIcon } from '@icons/Solid/play-circle.svg'
 import {
 	getFullScreenPopoverGetPopupContainer,
 	usePlayerUIContext,
@@ -484,7 +484,7 @@ const ControlSettings = ({ setShowSettingsPopover }: ControlSettingsProps) => {
 				className={style.settingsButton}
 				onClick={() => setShowPlayerMouseTail(!showPlayerMouseTail)}
 			>
-				<CursorClickIcon />
+				{/* <CursorClickIcon /> */}
 				<p>Mouse trail</p>
 				<Switch
 					trackingId="MouseTrailMenuToggle"
@@ -500,7 +500,7 @@ const ControlSettings = ({ setShowSettingsPopover }: ControlSettingsProps) => {
 				className={style.settingsButton}
 				onClick={() => setSkipInactive(!skipInactive)}
 			>
-				<FastForwardIcon />
+				{/* <FastForwardIcon /> */}
 				<p>Skip inactive</p>
 				<Switch
 					trackingId="SkipInactiveMenuToggle"
@@ -517,7 +517,7 @@ const ControlSettings = ({ setShowSettingsPopover }: ControlSettingsProps) => {
 				className={style.settingsButton}
 				onClick={() => setAutoPlayVideo(!autoPlayVideo)}
 			>
-				<PlayCircleIcon />
+				{/* <PlayCircleIcon /> */}
 				<p>Autoplay</p>
 				<Switch
 					trackingId="AutoplayVideoMenuToggle"
@@ -551,9 +551,9 @@ const ControlSettings = ({ setShowSettingsPopover }: ControlSettingsProps) => {
 				className={style.settingsButton}
 				onClick={() => setShowSessionSettings(false)}
 			>
-				<AnnotationIcon />
+				{/* <AnnotationIcon /> */}
 				<p>Annotations</p>
-				<ChevronRightIcon className={style.moveRight} />
+				{/* <ChevronRightIcon className={style.moveRight} /> */}
 			</button>
 		</>
 	)
@@ -653,12 +653,12 @@ const ControlSettings = ({ setShowSettingsPopover }: ControlSettingsProps) => {
 				<button className={style.settingsButton}>
 					{showSessionSettings ? (
 						<>
-							<CrossIcon />
+							{/* <CrossIcon /> */}
 							<span>Close</span>{' '}
 						</>
 					) : (
 						<>
-							<ChevronLeftIcon />
+							{/* <ChevronLeftIcon /> */}
 							<span>Back to session settings</span>
 						</>
 					)}

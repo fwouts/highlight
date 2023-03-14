@@ -16,7 +16,6 @@ import React, { useEffect, useState } from 'react'
 import Linkify from 'react-linkify'
 
 import newCommentFormStyles from '../NewCommentForm.module.scss'
-import commentTextBodyClassNames from './CommentTextBody.module.css'
 import styles from './CommentTextBody.module.scss'
 
 interface Props {
@@ -69,13 +68,11 @@ const CommentTextBody = ({
 		for (const { matched, value } of splitTaggedUsers(commentText)) {
 			if (matched) {
 				pieces.push(
-					<span className={commentTextBodyClassNames.mentionedUser}>
-						{value}
-					</span>,
+					<span className={styles.mentionedUser}>{value}</span>,
 				)
 			} else {
 				pieces.push(
-					<span className={commentTextBodyClassNames.commentText}>
+					<span className={styles.commentText}>
 						<Linkify
 							componentDecorator={(
 								decoratedHref: string,
@@ -105,7 +102,7 @@ const CommentTextBody = ({
 		<MentionsInput
 			value={commentText}
 			className="mentions"
-			classNames={commentTextBodyClassNames}
+			classNames={styles}
 			onChange={onChangeHandler}
 			placeholder={placeholder}
 			autoFocus={shouldAutoFocus}
@@ -151,7 +148,7 @@ const CommentTextBody = ({
 			}
 		>
 			<Mention
-				className={commentTextBodyClassNames.mentions__mention}
+				className={styles.mentionsMention}
 				trigger="@"
 				data={suggestions}
 				displayTransform={onDisplayTransformHandler}

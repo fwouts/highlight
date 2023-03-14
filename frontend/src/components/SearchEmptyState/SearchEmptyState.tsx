@@ -2,14 +2,11 @@ import { isOnPrem } from '@util/onPrem/onPremUtils'
 import clsx from 'clsx'
 import React, { ReactNode } from 'react'
 
-import { ReactComponent as EmptyState } from '../../static/empty-state.svg'
-import {
-	emptyStateSection,
-	emptyStateWrapper,
-	emptySubTitle,
-	emptyTitle,
-} from './SearchEmptyState.module.scss'
+// import { ReactComponent as EmptyState } from '../../static/empty-state.svg'
 import styles from './SearchEmptyState.module.scss'
+
+const { emptyStateSection, emptyStateWrapper, emptySubTitle, emptyTitle } =
+	styles
 
 interface Props {
 	item: string
@@ -27,13 +24,13 @@ export const SearchEmptyState = ({
 	<div className={clsx(styles.newFeedStyles, className)}>
 		<div className={emptyStateWrapper}>
 			<div style={{ marginRight: 80 }} className={emptyStateSection}>
-				<EmptyState preserveAspectRatio="xMinYMin" />
+				{/* <EmptyState preserveAspectRatio="xMinYMin" /> */}
 			</div>
 			<div style={{ marginLeft: 80 }} className={emptyStateSection}>
-				<EmptyState preserveAspectRatio="xMinYMin" />
+				{/* <EmptyState preserveAspectRatio="xMinYMin" /> */}
 			</div>
 			<div style={{ marginRight: 80 }} className={emptyStateSection}>
-				<EmptyState preserveAspectRatio="xMinYMin" />
+				{/* <EmptyState preserveAspectRatio="xMinYMin" /> */}
 			</div>
 		</div>
 		<h3 className={emptyTitle}>

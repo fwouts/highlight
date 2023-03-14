@@ -11,7 +11,7 @@ import { useBackendIntegrated } from '@util/integrated'
 import { useParams } from '@util/react-router/useParams'
 import { message, Spin } from 'antd'
 import clsx from 'clsx'
-import { capitalize } from 'lodash'
+import { capitalize } from 'lodash-es'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import Skeleton from 'react-loading-skeleton'
@@ -23,7 +23,7 @@ import Collapsible from '../../components/Collapsible/Collapsible'
 import SvgSlackLogo from '../../components/icons/SlackLogo'
 import LeadAlignLayout from '../../components/layout/LeadAlignLayout'
 import layoutStyles from '../../components/layout/LeadAlignLayout.module.scss'
-import { ReactComponent as CheckIcon } from '../../static/verify-check-icon.svg'
+// import { ReactComponent as CheckIcon } from '../../static/verify-check-icon.svg'
 import { CodeBlock } from './CodeBlock/CodeBlock'
 import { IntegrationDetector } from './IntegrationDetector/IntegrationDetector'
 import styles from './SetupPage.module.scss'
@@ -178,11 +178,12 @@ const SetupPage = ({ integrated }: { integrated: boolean }) => {
 													/>
 												</div>
 											) : (
-												<CheckIcon
-													className={clsx(
-														styles.checkIcon,
-													)}
-												/>
+												<></>
+												// <CheckIcon
+												// 	className={clsx(
+												// 		styles.checkIcon,
+												// 	)}
+												// />
 											)}
 										</div>{' '}
 										{s.displayName}

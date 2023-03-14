@@ -1,7 +1,8 @@
 import clsx from 'clsx'
 import React from 'react'
 
-import { ReactComponent as ReferrerIcon } from '../../../static/referrer.svg'
+// FIXME: svg component transform
+// import { ReactComponent as ReferrerIcon } from '../../../static/referrer.svg'
 import styles from './index.module.scss'
 
 interface GoToButtonComponentProps {
@@ -22,11 +23,11 @@ const GoToButton = ({ label = 'Goto', small, ...props }: GoToButtonProps) => {
 			})}
 		>
 			{!small && `${label} `}
-			<ReferrerIcon
+			{/* <ReferrerIcon
 				className={clsx(styles.icon, {
 					[styles.small]: small,
 				})}
-			/>
+			/> */}
 		</button>
 	)
 }

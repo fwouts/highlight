@@ -21,7 +21,8 @@ import React, { useEffect } from 'react'
 
 import styles from './HeightIntegrationConfig.module.scss'
 
-const HEIGHT_CLIENT_ID = import.meta.env.HEIGHT_CLIENT_ID
+// const HEIGHT_CLIENT_ID = import.meta.env.HEIGHT_CLIENT_ID
+const HEIGHT_CLIENT_ID = ''
 
 const HeightIntegrationConfig: React.FC<IntegrationConfigProps> = ({
 	setModalOpen,

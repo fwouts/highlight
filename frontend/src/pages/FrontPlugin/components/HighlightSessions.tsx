@@ -14,7 +14,7 @@ import MinimalSessionCard from '@pages/Sessions/SessionsFeedV3/MinimalSessionCar
 import SessionQueryBuilder from '@pages/Sessions/SessionsFeedV3/SessionQueryBuilder/SessionQueryBuilder'
 import { useParams } from '@util/react-router/useParams'
 import { GetBaseURL } from '@util/window'
-import moment from 'moment/moment'
+import moment from 'moment'
 import React, { useEffect, useState } from 'react'
 
 function HighlightSessions() {

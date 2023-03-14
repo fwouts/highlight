@@ -77,27 +77,38 @@ class SimpleAuth {
 }
 
 export let auth: SimpleAuth
-if (import.meta.env.REACT_APP_AUTH_MODE === 'simple') {
+// if (import.meta.env.REACT_APP_AUTH_MODE === 'simple') {
+if (false) {
 	auth = new SimpleAuth()
 } else {
 	let firebaseConfig: any
 	let firebaseConfigString: string
 
-	if (import.meta.env.REACT_APP_FIREBASE_CONFIG_OBJECT) {
-		firebaseConfigString =
-			import.meta.env.REACT_APP_FIREBASE_CONFIG_OBJECT ?? ''
-	} else {
-		firebaseConfigString = window._highlightFirebaseConfigString
-	}
+	// if (import.meta.env.REACT_APP_FIREBASE_CONFIG_OBJECT) {
+	// 	firebaseConfigString =
+	// 		import.meta.env.REACT_APP_FIREBASE_CONFIG_OBJECT ?? ''
+	// } else {
+	// 	firebaseConfigString = window._highlightFirebaseConfigString
+	// }
 
-	// NOTE: we use eval() here (rather than JSON.parse) because its more in-tune
-	// with the string presented to a developer in the firebase console.
-	// This value is passed at build time, so security concerns are put aside.
-	try {
-		firebaseConfig = eval('(' + firebaseConfigString + ')')
-	} catch (_e) {
-		const e = _e as Error
-		throw new Error('Error parsing incoming firebase config' + e.toString())
+	// // NOTE: we use eval() here (rather than JSON.parse) because its more in-tune
+	// // with the string presented to a developer in the firebase console.
+	// // This value is passed at build time, so security concerns are put aside.
+	// try {
+	// 	firebaseConfig = eval('(' + firebaseConfigString + ')')
+	// } catch (_e) {
+	// 	const e = _e as Error
+	// 	throw new Error('Error parsing incoming firebase config' + e.toString())
+	// }
+
+	firebaseConfig = {
+		apiKey: 'AIzaSyD7g86A3EzEKmoE7aZ04Re3HZ0B4bWlL68',
+		authDomain: 'auth.highlight.run',
+		databaseURL: 'https://highlight-f5c5b.firebaseio.com',
+		projectId: 'highlight-f5c5b',
+		storageBucket: 'highlight-f5c5b.appspot.com',
+		messagingSenderId: '263184175068',
+		appId: '1:263184175068:web:f8190c20320087d1c6c919',
 	}
 
 	window._highlightFirebaseConfig = firebaseConfig

@@ -1,6 +1,6 @@
 import { ErrorMessage } from '../types/shared-types'
 import stringify from 'json-stringify-safe'
-import ErrorStackParser from 'error-stack-parser'
+import { ErrorStackParser, StackFrame } from './../error-stack-parser'
 
 export const ErrorListener = (callback: (e: ErrorMessage) => void) => {
 	const initialOnError = window.onerror
@@ -12,7 +12,7 @@ export const ErrorListener = (callback: (e: ErrorMessage) => void) => {
 		error: Error | undefined,
 	): void => {
 		if (error) {
-			let res: ErrorStackParser.StackFrame[] = []
+			let res: StackFrame[] = []
 
 			try {
 				res = ErrorStackParser.parse(error)
@@ -29,6 +29,7 @@ export const ErrorListener = (callback: (e: ErrorMessage) => void) => {
 				columnNumber: framesToUse[0]?.columnNumber
 					? framesToUse[0]?.columnNumber
 					: 0,
+				// @ts-expect-error
 				stackTrace: framesToUse,
 				timestamp: new Date().toISOString(),
 			})
@@ -39,9 +40,7 @@ export const ErrorListener = (callback: (e: ErrorMessage) => void) => {
 	}
 }
 
-const removeHighlightFrameIfExists = (
-	frames: ErrorStackParser.StackFrame[],
-): ErrorStackParser.StackFrame[] => {
+const removeHighlightFrameIfExists = (frames: StackFrame[]): StackFrame[] => {
 	if (frames.length === 0) {
 		return frames
 	}

@@ -1,5 +1,8 @@
 import { RequestResponsePair } from './models'
-import publicGraphURI from 'consts:publicGraphURI'
+// import publicGraphURI from 'consts:publicGraphURI' // TODO: figure out alternative for this?
+// const publicGraphURI = 'localhost:8082'
+// const publicGraphURI = 'https://pub.highlight.run'
+const publicGraphURI = 'https://pub.highlight.run'
 
 export const HIGHLIGHT_REQUEST_HEADER = 'X-Highlight-Request'
 

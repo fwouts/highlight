@@ -38,7 +38,7 @@ import EmptyCardPlaceholder from '@pages/Home/components/EmptyCardPlaceholder/Em
 import { WEB_VITALS_CONFIGURATION } from '@pages/Player/StreamElement/Renderers/WebVitals/utils/WebVitalsUtils'
 import { useParams } from '@util/react-router/useParams'
 import clsx from 'clsx'
-import _ from 'lodash'
+import _ from 'lodash-es'
 import moment from 'moment'
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'

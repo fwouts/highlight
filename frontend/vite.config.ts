@@ -72,10 +72,10 @@ export default defineConfig(({ mode }) => {
 		server: {
 			host: '0.0.0.0',
 			port: 3000,
-			https: {
-				key: join(__dirname, '../backend/localhostssl/server.key'),
-				cert: join(__dirname, '../backend/localhostssl/server.crt'),
-			},
+			// https: {
+			// 	key: join(__dirname, '../backend/localhostssl/server.key'),
+			// 	cert: join(__dirname, '../backend/localhostssl/server.crt'),
+			// },
 			// ensure hmr works when proxying frontend
 			strictPort: true,
 			hmr: {

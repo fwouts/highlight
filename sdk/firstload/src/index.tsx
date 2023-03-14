@@ -1,4 +1,3 @@
-import packageJson from '../package.json'
 import { listenToChromeExtensionMessage } from './browserExtension/extensionListener'
 import {
 	AmplitudeAPI,
@@ -6,19 +5,28 @@ import {
 } from './integrations/amplitude'
 import { MixpanelAPI, setupMixpanelIntegration } from './integrations/mixpanel'
 import { initializeFetchListener } from './listeners/fetch'
-import { getPreviousSessionData } from '../../client/src/utils/sessionStorage/highlightSession'
-import { FirstLoadListeners } from '../../client/src/listeners/first-load-listeners'
-import { GenerateSecureID } from '../../client/src/utils/secure-id'
-import type { Highlight, HighlightClassOptions } from '../../client/src/index'
+// FIXME: this was using relative urls to prevent from referring to @highlight-run/client
+// in bundles: https://www.highlight.io/blog/publishing-private-pnpm-monorepo
+// Can probably reconfigure rollup to treat @highlight-run/client as internal bundled module?
+import { getPreviousSessionData } from '@highlight-run/client/src/utils/sessionStorage/highlightSession'
+import { FirstLoadListeners } from '@highlight-run/client/src/listeners/first-load-listeners'
+import { GenerateSecureID } from '@highlight-run/client/src/utils/secure-id'
+import type {
+	Highlight,
+	HighlightClassOptions,
+} from '@highlight-run/client/src/index'
 import type {
 	HighlightOptions,
 	HighlightPublicInterface,
 	Metadata,
 	Metric,
 	SessionDetails,
-} from '../../client/src/types/types'
+} from '@highlight-run/client/src/types/types'
 import HighlightSegmentMiddleware from './integrations/segment'
 import configureElectronHighlight from './environments/electron'
+
+// import packageJson from '../package.json' // TODO: figure out how to keep this in sync
+const firstloadVersion = '5.2.5'
 
 initializeFetchListener()
 
@@ -81,7 +89,7 @@ export const H: HighlightPublicInterface = {
 			script = document.createElement('script')
 			var scriptSrc = options?.scriptUrl
 				? options.scriptUrl
-				: `https://static.highlight.io/v${packageJson.version}/index.js`
+				: `https://static.highlight.io/v${firstloadVersion}/index.js`
 			script.setAttribute('src', scriptSrc)
 			script.setAttribute('type', 'text/javascript')
 			document.getElementsByTagName('head')[0].appendChild(script)
@@ -106,11 +114,12 @@ export const H: HighlightPublicInterface = {
 				enableCanvasRecording: options?.enableCanvasRecording,
 				enablePerformanceRecording: options?.enablePerformanceRecording,
 				samplingStrategy: options?.samplingStrategy,
-				inlineImages: options?.inlineImages,
-				inlineStylesheet: options?.inlineStylesheet,
-				recordCrossOriginIframe: options?.recordCrossOriginIframe,
-				isCrossOriginIframe: options?.isCrossOriginIframe,
-				firstloadVersion: packageJson['version'],
+				inlineImages: options?.inlineImages || false,
+				inlineStylesheet: options?.inlineStylesheet || false,
+				recordCrossOriginIframe:
+					options?.recordCrossOriginIframe || false,
+				isCrossOriginIframe: options?.isCrossOriginIframe || false,
+				firstloadVersion: firstloadVersion,
 				environment: options?.environment || 'production',
 				appVersion: options?.version,
 				sessionShortcut: options?.sessionShortcut,

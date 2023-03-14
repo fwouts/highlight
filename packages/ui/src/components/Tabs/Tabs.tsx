@@ -2,7 +2,9 @@ import React from 'react'
 import { Box } from '../Box/Box'
 
 import * as styles from './styles.css'
-import { Button, Text } from '../../components'
+// FIXME: seems like a bug in es-module-shims with circular references + reexports
+// import * as components from '../../components'
+import * as components from '../../components'
 
 interface Page {
 	page: React.ReactNode
@@ -59,20 +61,20 @@ export const Tabs = function <T extends string>({
 								setTab(t as T)
 							}}
 						>
-							<Button
+							<components.Button
 								iconLeft={pages[t].icon}
 								cssClass={styles.controlBarVariants({
 									selected: t === tab,
 								})}
 							>
-								<Text
+								<components.Text
 									color={t === tab ? 'p9' : 'n11'}
 									cssClass={styles.tabText}
 								>
 									{t}
 									{pages[t].badge}
-								</Text>
-							</Button>
+								</components.Text>
+							</components.Button>
 							<Box
 								cssClass={styles.controlBarBottomVariants({
 									hovered: t === hoveredTab,

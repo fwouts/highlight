@@ -60,8 +60,10 @@ export const ProjectRouter = () => {
 
 	useEffect(() => {
 		const uri =
-			import.meta.env.REACT_APP_PRIVATE_GRAPH_URI ??
-			window.location.origin + '/private'
+			// import.meta.env.REACT_APP_PRIVATE_GRAPH_URI ??
+			// window.location.origin + '/private'
+			'https://pri.highlight.run'
+
 		let intervalId: NodeJS.Timeout
 
 		auth.currentUser?.getIdToken().then((t) => {

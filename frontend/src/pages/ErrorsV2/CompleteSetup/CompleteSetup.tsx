@@ -8,7 +8,8 @@ import {
 	vars,
 } from '@highlight-run/ui'
 import React from 'react'
-const { DEMO_ERROR_URL } = import.meta.env
+// const DEMO_ERROR_URL = import.meta.env.DEMO_ERROR_URL
+const DEMO_ERROR_URL = ''
 
 export const CompleteSetup = () => {
 	return (

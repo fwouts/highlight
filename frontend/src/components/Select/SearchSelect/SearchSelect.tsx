@@ -1,5 +1,5 @@
 import { Select } from 'antd'
-import _ from 'lodash'
+import _ from 'lodash-es'
 import { useEffect, useMemo, useState } from 'react'
 
 import styles from './SearchSelect.module.scss'

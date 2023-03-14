@@ -8,7 +8,8 @@ import {
 	vars,
 } from '@highlight-run/ui'
 import React from 'react'
-const { DEMO_SESSION_URL } = import.meta.env
+// const DEMO_SESSION_URL = import.meta.env.DEMO_SESSION_URL
+const DEMO_SESSION_URL = ''
 
 export const CompleteSetup = () => {
 	return (

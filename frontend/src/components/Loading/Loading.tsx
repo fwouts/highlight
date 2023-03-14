@@ -7,8 +7,8 @@ import SvgHighlightLogoWithNoBackground from '@icons/HighlightLogoWithNoBackgrou
 import { Spin } from 'antd'
 import { AnimatePresence, motion } from 'framer-motion'
 import React from 'react'
-import BarLoader from 'react-spinners/BarLoader'
 
+// import BarLoader from 'react-spinners/BarLoader'
 import styles from './Loading.module.scss'
 
 export const CircularSpinner = ({ style }: { style?: React.CSSProperties }) => {
@@ -40,7 +40,7 @@ export const LoadingBar = ({
 				style={{ width: width || 100 }}
 				className={styles.spinnerStyle}
 			>
-				<BarLoader width={width} height={height} color="#5629c6" />
+				{/* <BarLoader width={width} height={height} color="#5629c6" /> */}
 			</div>
 		</div>
 	)

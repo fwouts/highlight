@@ -1,14 +1,13 @@
 import clsx from 'clsx'
 import React, { useMemo } from 'react'
-import ReactNiceAvatar, { genConfig } from 'react-nice-avatar'
 
+// TODO: fix this package
+// import ReactNiceAvatar, { genConfig } from 'react-nice-avatar'
 import { generateRandomColor } from '../../util/color'
-import {
-	userAvatar,
-	userAvatarBorder,
-	userAvatarText,
-	userAvatarWrapper,
-} from './Avatar.module.scss'
+import styles from './Avatar.module.scss'
+
+const { userAvatar, userAvatarBorder, userAvatarText, userAvatarWrapper } =
+	styles
 
 const BACKGROUND_COLORS = [
 	'--color-purple-300',
@@ -77,26 +76,27 @@ export const Avatar = ({
 }) => {
 	const config = useMemo(() => {
 		const seedAsInt = getAvatarHash(seed)
-		return genConfig({
-			bgColor: `var(${
-				BACKGROUND_COLORS[seedAsInt % BACKGROUND_COLORS.length]
-			})`,
-			earSize: EAR_SIZES[seedAsInt % EAR_SIZES.length],
-			eyeStyle: EYE_STYLES[seedAsInt % EYE_STYLES.length],
-			faceColor: FACE_COLORS[seedAsInt % FACE_COLORS.length],
-			sex: SEXES[seedAsInt % SEXES.length],
-			hairColor: HAIR_COLORS[seedAsInt % HAIR_COLORS.length],
-			hairStyle: HAIR_STYLES[seedAsInt % HAIR_STYLES.length],
-			hatColor: `var(${
-				BACKGROUND_COLORS[(seedAsInt * 3) % BACKGROUND_COLORS.length]
-			})`,
-			hatStyle: HAT_STYLES[seedAsInt % HAT_STYLES.length],
-			glassesStyle: GLASSES_STYLES[seedAsInt % GLASSES_STYLES.length],
-			noseStyle: NOSE_STYLES[seedAsInt % NOSE_STYLES.length],
-			mouthStyle: MOUTH_STYLES[seedAsInt % MOUTH_STYLES.length],
-			shirtStyle: SHIRT_STYLES[seedAsInt % MOUTH_STYLES.length],
-			shirtColor: '#5629c6',
-		})
+		return {}
+		// return genConfig({
+		// 	bgColor: `var(${
+		// 		BACKGROUND_COLORS[seedAsInt % BACKGROUND_COLORS.length]
+		// 	})`,
+		// 	earSize: EAR_SIZES[seedAsInt % EAR_SIZES.length],
+		// 	eyeStyle: EYE_STYLES[seedAsInt % EYE_STYLES.length],
+		// 	faceColor: FACE_COLORS[seedAsInt % FACE_COLORS.length],
+		// 	sex: SEXES[seedAsInt % SEXES.length],
+		// 	hairColor: HAIR_COLORS[seedAsInt % HAIR_COLORS.length],
+		// 	hairStyle: HAIR_STYLES[seedAsInt % HAIR_STYLES.length],
+		// 	hatColor: `var(${
+		// 		BACKGROUND_COLORS[(seedAsInt * 3) % BACKGROUND_COLORS.length]
+		// 	})`,
+		// 	hatStyle: HAT_STYLES[seedAsInt % HAT_STYLES.length],
+		// 	glassesStyle: GLASSES_STYLES[seedAsInt % GLASSES_STYLES.length],
+		// 	noseStyle: NOSE_STYLES[seedAsInt % NOSE_STYLES.length],
+		// 	mouthStyle: MOUTH_STYLES[seedAsInt % MOUTH_STYLES.length],
+		// 	shirtStyle: SHIRT_STYLES[seedAsInt % MOUTH_STYLES.length],
+		// 	shirtColor: '#5629c6',
+		// })
 	}, [seed])
 
 	if (customImage) {
@@ -110,12 +110,14 @@ export const Avatar = ({
 	}
 
 	return (
-		<ReactNiceAvatar
-			style={style as any}
-			{...config}
-			shape={shape}
-			className={className}
-		/>
+		<></>
+		// <ReactNiceAvatar
+		// 	style={style as any}
+		// 	{...config}
+		// 	// @ts-expect-error
+		// 	shape={shape}
+		// 	className={className}
+		// />
 	)
 }
 

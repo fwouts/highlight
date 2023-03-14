@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import React from 'react'
 
-import { ReactComponent as EmptyState } from '../../../../static/empty-state.svg'
+// import { ReactComponent as EmptyState } from '../../../../static/empty-state.svg'
 import styles from './EmptyCardPlaceholder.module.scss'
 
 interface Props {
@@ -18,11 +18,11 @@ const EmptyCardPlaceholder = ({ message, title, compact }: Props) => {
 					[styles.compact]: compact,
 				})}
 			>
-				<EmptyState
+				{/* <EmptyState
 					height={30}
 					width={220}
 					preserveAspectRatio="xMinYMin"
-				/>
+				/> */}
 			</div>
 
 			<h3>{title || 'No data yet'}</h3>

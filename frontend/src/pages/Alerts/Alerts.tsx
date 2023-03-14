@@ -21,7 +21,7 @@ import AlertSetupModal from '@pages/Alerts/AlertSetupModal/AlertSetupModal'
 import AlertLastEditedBy from '@pages/Alerts/components/AlertLastEditedBy/AlertLastEditedBy'
 import { getAlertTypeColor } from '@pages/Alerts/utils/AlertsUtils'
 import { useParams } from '@util/react-router/useParams'
-import { compact } from 'lodash'
+import { compact } from 'lodash-es'
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 

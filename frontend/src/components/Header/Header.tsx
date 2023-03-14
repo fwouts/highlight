@@ -792,7 +792,8 @@ const OnPremiseBanner = () => {
 		>
 			<div className={clsx(styles.trialTimeText)}>
 				Running Highlight On-premise{' '}
-				{`v${import.meta.env.REACT_APP_COMMIT_SHA}`}
+				{/* {`v${import.meta.env.REACT_APP_COMMIT_SHA}`} */}
+				{`v${'1'}`}
 			</div>
 		</div>
 	)

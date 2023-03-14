@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Tooltip from '../../../components/Tooltip/Tooltip'
-import { ReactComponent as CheckIcon } from '../../../static/verify-check-icon.svg'
+// import { ReactComponent as CheckIcon } from '../../../static/verify-check-icon.svg'
 import ActivityIcon from '../../Player/SessionLevelBar/ActivityIcon/ActivityIcon'
 import styles from './IntegrationDetector.module.scss'
 
@@ -24,7 +24,7 @@ export const IntegrationDetector = ({
 				<div className={styles.detectorWrapper}>
 					<div className={styles.loaderWrapper}>
 						{integrated ? (
-							<CheckIcon className={styles.checkIcon} />
+							<></> // <CheckIcon className={styles.checkIcon} />
 						) : (
 							<ActivityIcon
 								isActive={integrated}

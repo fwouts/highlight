@@ -11,7 +11,8 @@ import {
 	useRemoveIntegrationFromProjectMutation,
 } from '../../../../../graph/generated/hooks'
 
-const SLACK_CLIENT_ID = import.meta.env.SLACK_CLIENT_ID
+const SLACK_CLIENT_ID = ''
+// const SLACK_CLIENT_ID = import.meta.env.SLACK_CLIENT_ID
 
 export const useSlackBot = () => {
 	const { project_id } = useParams<{ project_id: string }>()

@@ -110,7 +110,8 @@ export const useBillingHook = ({
 }
 
 const getStripePromiseOrNull = () => {
-	const stripe_publishable_key = import.meta.env.REACT_APP_STRIPE_API_PK
+	// const stripe_publishable_key = import.meta.env.REACT_APP_STRIPE_API_PK
+	const stripe_publishable_key = ''
 	if (stripe_publishable_key) {
 		return loadStripe(stripe_publishable_key)
 	}

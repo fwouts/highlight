@@ -50,7 +50,7 @@ import analytics from '@util/analytics'
 import log from '@util/log'
 import { timedCall } from '@util/perf/instrument'
 import { H } from 'highlight.run'
-import moment from 'moment/moment'
+import moment from 'moment'
 import { MutableRefObject, SetStateAction } from 'react'
 
 const EMPTY_SESSION_METADATA = {

@@ -1,7 +1,7 @@
 import { Box, Text } from '@highlight-run/ui'
-import { ReactComponent as CircleRightArrow } from '@icons/Solid/arrow-circle-right.svg'
-import { ReactComponent as ChevronLeftIcon } from '@icons/Solid/cheveron-left.svg'
-import { ReactComponent as ChevronRightIcon } from '@icons/Solid/cheveron-right.svg'
+// import { ReactComponent as CircleRightArrow } from '@icons/Solid/arrow-circle-right.svg'
+// import { ReactComponent as ChevronLeftIcon } from '@icons/Solid/cheveron-left.svg'
+// import { ReactComponent as ChevronRightIcon } from '@icons/Solid/cheveron-right.svg'
 import {
 	RightPanelView,
 	usePlayerUIContext,
@@ -150,21 +150,21 @@ const TimelinePopover = ({ bucket }: Props) => {
 						<span className={style.rightCounter}>
 							{formatTimeAsHMS(bucket.startTime)}
 						</span>
-						<CircleRightArrow
+						{/* <CircleRightArrow
 							className={clsx(
 								style.transitionIcon,
 								style.rightActionIcon,
 							)}
-						/>
+						/> */}
 					</button>
 				) : (
 					<button className={style.actionButton}>
-						<ChevronLeftIcon
+						{/*<ChevronLeftIcon
 							className={clsx(
 								style.transitionIcon,
 								style.leftActionIcon,
 							)}
-						/>
+						/> */}
 						<span>Back to event categories</span>
 					</button>
 				)}
@@ -218,12 +218,12 @@ const TimelinePopover = ({ bucket }: Props) => {
 									</span>
 									<div className={style.rightCounter}>
 										<span>{count}</span>
-										<ChevronRightIcon
+										{/* <ChevronRightIcon
 											className={clsx(
 												style.transitionIcon,
 												style.rightActionIcon,
 											)}
-										/>
+										/> */}
 									</div>
 								</button>
 							</div>
@@ -277,12 +277,12 @@ const TimelinePopover = ({ bucket }: Props) => {
 											<span>
 												{formatTimeAsHMS(timestamp)}
 											</span>
-											<CircleRightArrow
+											{/* <CircleRightArrow
 												className={clsx(
 													style.transitionIcon,
 													style.rightActionIcon,
 												)}
-											/>
+											/> */}
 										</div>
 									</button>
 								</div>
