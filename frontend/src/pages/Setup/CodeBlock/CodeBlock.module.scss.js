@@ -1,0 +1,1 @@
+var o={copyButton:"_copyButton_17xfp_1",copyDiv:"_copyDiv_17xfp_14",codeBlock:"_codeBlock_17xfp_22",codeBlockWrapper:"_codeBlockWrapper_17xfp_33",codeBlockInner:"_codeBlockInner_17xfp_57",highlightedLine:"_highlightedLine_17xfp_61",lineNumberSticky:"_lineNumberSticky_17xfp_65"};export{o as default};

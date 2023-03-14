@@ -1,0 +1,1 @@
+var t={detectorWrapper:"_detectorWrapper_n58mv_1",detector:"_detector_n58mv_1",loaderWrapper:"_loaderWrapper_n58mv_17",textWrapper:"_textWrapper_n58mv_25",checkIcon:"_checkIcon_n58mv_35",verificationText:"_verificationText_n58mv_45"};export{t as default};
