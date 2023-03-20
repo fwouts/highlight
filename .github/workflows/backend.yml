@@ -18,7 +18,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
             - name: Setup Go
-              uses: actions/setup-go@v3
+              uses: actions/setup-go@v4
               with:
                   go-version-file: 'backend/go.mod'
             - uses: dorny/paths-filter@v2
@@ -40,7 +40,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
             - name: Setup Go
-              uses: actions/setup-go@v3
+              uses: actions/setup-go@v4
               with:
                   go-version-file: 'backend/go.mod'
 
@@ -55,7 +55,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
             - name: Setup Go
-              uses: actions/setup-go@v3
+              uses: actions/setup-go@v4
               with:
                   go-version-file: 'backend/go.mod'
             - name: Format
@@ -83,7 +83,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
             - name: Setup Go
-              uses: actions/setup-go@v3
+              uses: actions/setup-go@v4
               with:
                   go-version-file: 'backend/go.mod'
             - name: copy backend
@@ -115,7 +115,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
             - name: Setup Go
-              uses: actions/setup-go@v3
+              uses: actions/setup-go@v4
               with:
                   go-version-file: 'backend/go.mod'
             - name: Build binary
@@ -162,7 +162,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
             - name: Setup Go
-              uses: actions/setup-go@v3
+              uses: actions/setup-go@v4
               with:
                   go-version-file: 'backend/go.mod'
             - name: Run tests
