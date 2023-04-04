@@ -121,6 +121,7 @@ func makeRandomSecureSessionID() string {
 		"secure_session_id_1",
 		"secure_session_id_2",
 		"secure_session_id_3",
+		"wVl4Lu9MPjFOpZL8e2CuKy4Tvnh1",
 	}
 	return secureSessionIDs[rand.Intn(len(secureSessionIDs))]
 }

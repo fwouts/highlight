@@ -102,7 +102,7 @@ export const getHighlightRequestId = (resource?: NetworkResource) => {
 
 export enum Tab {
 	Errors = 'Errors',
-	Console = 'Console',
+	Console = 'Console Logs',
 	Network = 'Network',
 	Events = 'Events',
 }

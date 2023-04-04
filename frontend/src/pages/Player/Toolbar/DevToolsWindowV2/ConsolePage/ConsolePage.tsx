@@ -1,8 +1,11 @@
 import LoadingBox from '@components/LoadingBox'
-import { useGetMessagesQuery } from '@graph/hooks'
+import { useGetLogsQuery } from '@graph/hooks'
+import * as Types from '@graph/schemas'
 import { ConsoleMessage } from '@highlight-run/client'
 import { playerMetaData } from '@highlight-run/rrweb-types'
 import { Box, Text } from '@highlight-run/ui'
+import { useProjectId } from '@hooks/useProjectId'
+import { FORMAT } from '@pages/LogsPage/constants'
 import { EmptyDevToolsCallout } from '@pages/Player/Toolbar/DevToolsWindowV2/EmptyDevToolsCallout/EmptyDevToolsCallout'
 import { LogLevel, Tab } from '@pages/Player/Toolbar/DevToolsWindowV2/utils'
 import { indexedDBFetch } from '@util/db'
@@ -10,6 +13,7 @@ import { useParams } from '@util/react-router/useParams'
 import clsx from 'clsx'
 import { H } from 'highlight.run'
 import _ from 'lodash'
+import moment from 'moment'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Virtuoso, VirtuosoHandle } from 'react-virtuoso'
 import { styledVerticalScrollbar } from 'style/common.css'
@@ -20,6 +24,7 @@ import * as styles from './style.css'
 interface ParsedMessage extends ConsoleMessage {
 	selected?: boolean
 	id: number
+	level: LogLevel
 }
 
 export const ConsolePage = ({
@@ -33,6 +38,7 @@ export const ConsolePage = ({
 	logLevel: LogLevel
 	time: number
 }) => {
+	const { projectId } = useProjectId()
 	const [currentMessage, setCurrentMessage] = useState(-1)
 	const { session, setTime, sessionMetadata, isPlayerReady } =
 		useReplayerContext()
@@ -42,9 +48,18 @@ export const ConsolePage = ({
 	const { session_secure_id } = useParams<{ session_secure_id: string }>()
 	const [loading, setLoading] = useState(true)
 	const skipQuery = session === undefined || !!session?.messages_url
-	const { data, loading: queryLoading } = useGetMessagesQuery({
+
+	const { data, loading: queryLoading } = useGetLogsQuery({
 		variables: {
-			session_secure_id: session_secure_id!,
+			project_id: projectId,
+			direction: Types.LogDirection.Asc,
+			params: {
+				query: `secure_session_id:${session_secure_id}`,
+				date_range: {
+					start_date: moment().subtract(30, 'days').format(FORMAT),
+					end_date: moment().format(FORMAT),
+				},
+			},
 		},
 		fetchPolicy: 'no-cache',
 		skip: skipQuery || !session_secure_id, // Skip if there is a URL to fetch messages
@@ -100,14 +115,19 @@ export const ConsolePage = ({
 
 	useEffect(() => {
 		setParsedMessages(
-			data?.messages?.map((m: ConsoleMessage, i) => {
+			data?.logs.edges?.map((edge: Types.LogEdge, i) => {
+				const time = new Date(edge.node.timestamp).getTime()
 				return {
-					...m,
+					value: edge.node.message,
+					selected: false,
+					time,
+					type: edge.node.level,
+					level: edge.node.level,
 					id: i,
 				}
 			}) ?? [],
 		)
-	}, [data?.messages])
+	}, [data?.logs])
 
 	// Logic for scrolling to current entry.
 	useEffect(() => {
@@ -248,7 +268,7 @@ const MessageRow = React.memo(function ({
 				className={clsx(
 					styles.consoleBar,
 					styles.variants({
-						type: message.type as any,
+						type: message.type,
 					}),
 				)}
 			>
