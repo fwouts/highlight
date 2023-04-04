@@ -24,7 +24,6 @@ import * as styles from './style.css'
 interface ParsedMessage extends ConsoleMessage {
 	selected?: boolean
 	id: number
-	level: LogLevel
 }
 
 export const ConsolePage = ({
@@ -122,7 +121,6 @@ export const ConsolePage = ({
 					selected: false,
 					time,
 					type: edge.node.level,
-					level: edge.node.level,
 					id: i,
 				}
 			}) ?? [],
@@ -268,7 +266,7 @@ const MessageRow = React.memo(function ({
 				className={clsx(
 					styles.consoleBar,
 					styles.variants({
-						type: message.type,
+						type: message.type as any,
 					}),
 				)}
 			>
