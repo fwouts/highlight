@@ -215,10 +215,6 @@ export const loadSession = async function (secureID: string) {
 			for await (const _ of indexedDBFetch(sess.resources_url)) {
 			}
 		}
-		if (sess.messages_url) {
-			for await (const _ of indexedDBFetch(sess.messages_url)) {
-			}
-		}
 		if (sess.direct_download_url) {
 			for await (const _ of indexedDBFetch(sess.direct_download_url)) {
 			}
