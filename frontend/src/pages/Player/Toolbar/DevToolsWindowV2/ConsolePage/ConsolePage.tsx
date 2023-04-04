@@ -48,6 +48,8 @@ export const ConsolePage = ({
 	const [loading, setLoading] = useState(true)
 	const skipQuery = session === undefined || !!session?.messages_url
 
+	const endDate = session?.created_at ?? Date.now()
+
 	const { data, loading: queryLoading } = useGetLogsQuery({
 		variables: {
 			project_id: projectId,
@@ -55,8 +57,10 @@ export const ConsolePage = ({
 			params: {
 				query: `secure_session_id:${session_secure_id}`,
 				date_range: {
-					start_date: moment().subtract(30, 'days').format(FORMAT),
-					end_date: moment().format(FORMAT),
+					end_date: moment(endDate).format(FORMAT),
+					start_date: moment(endDate)
+						.subtract(4, 'hours')
+						.format(FORMAT),
 				},
 			},
 		},
