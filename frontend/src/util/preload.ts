@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { DEFAULT_PAGE_SIZE } from '@components/Pagination/Pagination'
 import { BackendSearchQuery } from '@context/BaseSearchContext'
 import {
