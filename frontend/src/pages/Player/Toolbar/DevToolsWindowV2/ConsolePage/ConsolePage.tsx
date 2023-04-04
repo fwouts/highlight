@@ -9,10 +9,8 @@ import { useProjectId } from '@hooks/useProjectId'
 import { COLOR_MAPPING, FORMAT } from '@pages/LogsPage/constants'
 import { EmptyDevToolsCallout } from '@pages/Player/Toolbar/DevToolsWindowV2/EmptyDevToolsCallout/EmptyDevToolsCallout'
 import { LogLevel, Tab } from '@pages/Player/Toolbar/DevToolsWindowV2/utils'
-import { indexedDBFetch } from '@util/db'
 import { useParams } from '@util/react-router/useParams'
 import clsx from 'clsx'
-import { H } from 'highlight.run'
 import _ from 'lodash'
 import moment from 'moment'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
@@ -46,12 +44,10 @@ export const ConsolePage = ({
 		undefined | Array<ParsedMessage>
 	>([])
 	const { session_secure_id } = useParams<{ session_secure_id: string }>()
-	const [loading, setLoading] = useState(true)
-	const skipQuery = session === undefined || !!session?.messages_url
 
 	const endDate = session?.created_at ?? Date.now()
 
-	const { data, loading: queryLoading } = useGetLogsQuery({
+	const { data, loading } = useGetLogsQuery({
 		variables: {
 			project_id: projectId,
 			direction: Types.LogDirection.Asc,
@@ -66,56 +62,8 @@ export const ConsolePage = ({
 			},
 		},
 		fetchPolicy: 'no-cache',
-		skip: skipQuery || !session_secure_id, // Skip if there is a URL to fetch messages
+		skip: !session_secure_id, // Skip if there is a URL to fetch messages
 	})
-
-	useEffect(() => {
-		if (!skipQuery) {
-			setLoading(queryLoading)
-		}
-	}, [queryLoading, skipQuery])
-
-	// If sessionSecureId is set and equals the current session's (ensures effect is run once)
-	// and resources url is defined, fetch using resources url
-	useEffect(() => {
-		if (
-			session_secure_id === session?.secure_id &&
-			!!session?.messages_url
-		) {
-			setLoading(true)
-			;(async () => {
-				if (!session.messages_url) return
-				let response
-				for await (const r of indexedDBFetch(session.messages_url)) {
-					response = r
-				}
-				if (response) {
-					response
-						.json()
-						.then((data) => {
-							setParsedMessages(
-								(data as any[] | undefined)?.map(
-									(m: ConsoleMessage, i) => {
-										return {
-											...m,
-											id: i,
-										}
-									},
-								) ?? [],
-							)
-						})
-						.catch((e) => {
-							setParsedMessages([])
-							H.consumeError(
-								e,
-								'Error direct downloading resources',
-							)
-						})
-						.finally(() => setLoading(false))
-				}
-			})()
-		}
-	}, [session?.messages_url, session?.secure_id, session_secure_id])
 
 	useEffect(() => {
 		setParsedMessages(
