@@ -1,11 +1,12 @@
 import LoadingBox from '@components/LoadingBox'
 import { useGetLogsQuery } from '@graph/hooks'
 import * as Types from '@graph/schemas'
+import { LogLevel as LogLevelGraphQL } from '@graph/schemas'
 import { ConsoleMessage } from '@highlight-run/client'
 import { playerMetaData } from '@highlight-run/rrweb-types'
 import { Box, Text } from '@highlight-run/ui'
 import { useProjectId } from '@hooks/useProjectId'
-import { FORMAT } from '@pages/LogsPage/constants'
+import { COLOR_MAPPING, FORMAT } from '@pages/LogsPage/constants'
 import { EmptyDevToolsCallout } from '@pages/Player/Toolbar/DevToolsWindowV2/EmptyDevToolsCallout/EmptyDevToolsCallout'
 import { LogLevel, Tab } from '@pages/Player/Toolbar/DevToolsWindowV2/utils'
 import { indexedDBFetch } from '@util/db'
@@ -267,12 +268,11 @@ const MessageRow = React.memo(function ({
 			}}
 		>
 			<div
-				className={clsx(
-					styles.consoleBar,
-					styles.variants({
-						type: message.type as any,
-					}),
-				)}
+				className={clsx(styles.consoleBar)}
+				style={{
+					backgroundColor:
+						COLOR_MAPPING[message.type as LogLevelGraphQL],
+				}}
 			>
 				&nbsp;
 			</div>

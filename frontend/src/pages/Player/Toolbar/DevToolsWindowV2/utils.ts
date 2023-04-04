@@ -110,7 +110,6 @@ export enum Tab {
 export enum LogLevel {
 	All = 'All',
 	Info = 'Info',
-	Log = 'Log',
 	Warn = 'Warn',
 	Error = 'Error',
 }
@@ -118,7 +117,6 @@ export enum LogLevel {
 export const LogLevelVariants = {
 	[LogLevel.All]: 'white',
 	[LogLevel.Info]: 'white',
-	[LogLevel.Log]: 'blue',
 	[LogLevel.Warn]: 'yellow',
 	[LogLevel.Error]: 'red',
 } as const

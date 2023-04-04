@@ -1,6 +1,6 @@
 import { colors } from '@highlight-run/ui/src/css/colors'
 import { style } from '@vanilla-extract/css'
-import { recipe, RecipeVariants } from '@vanilla-extract/recipes'
+import { recipe } from '@vanilla-extract/recipes'
 
 export const consoleBox = style({
 	width: '100%',
@@ -36,25 +36,6 @@ export const consoleRow = style({
 		},
 	},
 })
-
-export const variants = recipe({
-	variants: {
-		type: {
-			trace: { backgroundColor: colors.lb700 },
-			info: { backgroundColor: 'rgba(26, 21, 35, 0.72)' },
-			log: { backgroundColor: colors.n11 },
-			warn: { backgroundColor: colors.orange500 },
-			error: { backgroundColor: colors.red500 },
-			assert: { backgroundColor: colors.r9 },
-		},
-	},
-
-	defaultVariants: {
-		type: 'log',
-	},
-})
-
-export type Variants = RecipeVariants<typeof variants>
 
 export const messageRowVariants = recipe({
 	base: {
